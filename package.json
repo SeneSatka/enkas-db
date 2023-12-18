@@ -1,0 +1,24 @@
+{
+  "name": "@turkiyem/db",
+  "version": "0.0.1",
+  "description": "Turkiyem!! Db",
+  "main": "./src/cjs/index.js",
+  "module": "./src/mjs/index.js",
+  "types": "./src//typings/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "db",
+    "turkiyem",
+    "senesatka",
+    "database",
+    "trdb"
+  ],
+  "author": "SeneSatka",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@chocolatemilkdev/emitter": "^1.0.1",
+    "@types/node": "^20.10.4"
+  }
+}
