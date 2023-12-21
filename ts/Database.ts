@@ -23,7 +23,7 @@ interface Options {
   file?: string | "database";
 }
 
-export class DB<V> extends ChocolateMilkEmitter<Events> {
+export class DB extends ChocolateMilkEmitter<Events> {
   private path: string;
   private file: string = "database";
   private data: object | any;
@@ -52,12 +52,12 @@ export class DB<V> extends ChocolateMilkEmitter<Events> {
     if (typeof data === "object") this.data = data;
     save(this.path, this.file, this.data);
   }
-  setForge(key: string, value: V | any) {
+  setForge(key: string, value: any) {
     const { oldValue, data } = _setForge(this.data, key, value);
     this.save(data);
     this.emit("set", { key, oldValue: oldValue, newValue: value });
   }
-  set(key: string, value: V | any) {
+  set(key: string, value: any) {
     const { oldValue, data } = _set(this.data, key, value);
     this.save(data);
     this.emit("set", { key, oldValue: oldValue, newValue: value });
@@ -88,25 +88,25 @@ export class DB<V> extends ChocolateMilkEmitter<Events> {
   fetch(key: string) {
     return this.get(key);
   }
-  push(key: string, value: V | any) {
+  push(key: string, value: any) {
     const { array, data } = _push(this.data, key, value);
     this.save(data);
     this.emit("push", { array, key, pushedData: value });
   }
-  pull(key: string, value: V | any) {
+  pull(key: string, value: any) {
     const { array, data } = _pull(this.data, key, value);
     this.save(data);
     this.emit("pull", { array, key, pulledData: value });
   }
 }
-export class ArrayDB<V> extends ChocolateMilkEmitter<{
+export class ArrayDB extends ChocolateMilkEmitter<{
   push(data: { pushedData: any; data: Array<any> }): any;
   pull(data: { pulledData: any; data: Array<any> }): any;
   deleteAll(data: { data: any }): any;
 }> {
   path: string;
   file: string = "database";
-  private data: Array<V>;
+  private data: Array<any>;
   constructor(options?: Options) {
     super();
     this.path = options?.path ?? "enkas";
@@ -127,7 +127,7 @@ export class ArrayDB<V> extends ChocolateMilkEmitter<{
   private loadData() {
     this.data = getData(process.cwd() + "/" + this.path, this.file, "array");
   }
-  private save(data?: Array<V>) {
+  private save(data?: Array<any>) {
     pathControl(this.path);
     if (typeof data === "object") this.data = data;
     save(this.path, this.file, this.data);
