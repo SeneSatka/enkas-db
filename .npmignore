@@ -2,3 +2,5 @@ node_modules
 enkas
 ts
 package-lock.json
+tsconfig.esm.json
+tsconfig.json
