@@ -1,6 +1,6 @@
 {
   "name": "@enkas/db",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Written by SeneSatka",
   "main": "./src/cjs/index.js",
   "module": "./src/mjs/index.js",
@@ -21,6 +21,6 @@
     "@chocolatemilkdev/emitter": "^1.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.10.4"
+    "@types/node": "^20.10.5"
   }
 }
