@@ -1,6 +1,6 @@
 {
   "name": "@enkas/db",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Written by SeneSatka",
   "main": "./src/cjs/index.js",
   "module": "./src/mjs/index.js",
