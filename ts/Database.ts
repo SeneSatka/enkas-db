@@ -104,7 +104,7 @@ export class DB extends ChocolateMilkEmitter<Events> {
     else if (typeof this.get(key) === "number") {
       const { oldValue, data } = _set(this.data, key, this.get(key) + value);
       this.save(data);
-      this.emit("add", { key, oldValue: oldValue, newValue: value });
+      this.emit("add", { key, oldValue: oldValue, newValue: this.get(key) });
     }
   }
   subtract(key: string, value: number) {
@@ -113,7 +113,11 @@ export class DB extends ChocolateMilkEmitter<Events> {
     else if (typeof this.get(key) === "number") {
       const { oldValue, data } = _set(this.data, key, this.get(key) - value);
       this.save(data);
-      this.emit("subtract", { key, oldValue: oldValue, newValue: value });
+      this.emit("subtract", {
+        key,
+        oldValue: oldValue,
+        newValue: this.get(key),
+      });
     }
   }
 }
