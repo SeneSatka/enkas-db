@@ -98,6 +98,24 @@ export class DB extends ChocolateMilkEmitter<Events> {
     this.save(data);
     this.emit("pull", { array, key, pulledData: value });
   }
+  add(key: string, value: number) {
+    if (typeof this.get(key) !== "number")
+      throw TypeError(`${key} is not a number`);
+    else if (typeof this.get(key) === "number") {
+      const { oldValue, data } = _set(this.data, key, this.get(key) + value);
+      this.save(data);
+      this.emit("add", { key, oldValue: oldValue, newValue: value });
+    }
+  }
+  subtract(key: string, value: number) {
+    if (typeof this.get(key) !== "number")
+      throw TypeError(`${key} is not a number`);
+    else if (typeof this.get(key) === "number") {
+      const { oldValue, data } = _set(this.data, key, this.get(key) - value);
+      this.save(data);
+      this.emit("subtract", { key, oldValue: oldValue, newValue: value });
+    }
+  }
 }
 export class ArrayDB extends ChocolateMilkEmitter<{
   push(data: { pushedData: any; data: Array<any> }): any;
